@@ -23,11 +23,18 @@
  */
 
 require_once(__DIR__ . '/../../../config.php');
+
+$id = optional_param('id', 0, PARAM_INT);
+
 $url = new moodle_url('/admin/tool/danielneis/index.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_url($url);
 $PAGE->set_pagelayout('report');
-$PAGE->set_title(get_string('indextitle', 'tool_danielneis'));
+$pagetitle = get_string('indextitle', 'tool_danielneis');
+$PAGE->set_title($pagetitle);
 $PAGE->set_heading(get_string('pluginname', 'tool_danielneis'));
 
-echo get_string('hello', 'tool_danielneis');
+echo $OUTPUT->header(),
+     $OUTPUT->heading($pagetitle),
+     html_writer::tag('h2', get_string('hello', 'tool_danielneis', $id)),
+     $OUTPUT->footer();

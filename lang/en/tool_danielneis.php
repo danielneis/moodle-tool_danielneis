@@ -15,5 +15,5 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 $string['indextitle'] = 'Welcome to tool example by Daniel';
-$string['hello'] = 'Hello world!';
+$string['hello'] = 'Hello world! The provided id is: {$a}';
 $string['pluginname'] = 'Tool example by Daniel';
