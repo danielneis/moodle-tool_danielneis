@@ -24,6 +24,8 @@
 
 require_once(__DIR__ . '/../../../config.php');
 
+require_login();
+
 $id = required_param('id', PARAM_INT);
 
 $url = new moodle_url('/admin/tool/danielneis/index.php', array('id' => $id));
