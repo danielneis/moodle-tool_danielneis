@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$string['indextitle'] = 'Welcome to tool example by Daniel';
 $string['hello'] = 'Hello world! The provided id is: {$a}';
+$string['indextitle'] = 'Welcome to tool example by Daniel';
+$string['pluginlink'] = 'Tool example';
 $string['pluginname'] = 'Tool example by Daniel';

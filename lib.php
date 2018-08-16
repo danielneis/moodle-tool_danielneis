@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version info
+ * Plugin lib
  *
  * @package    tool_danielneis
  * @copyright  2018 Daniel Neis
@@ -23,7 +23,10 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-$plugin->version   = 2018081605; // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2018050800; // Requires this Moodle version.
-$plugin->component = 'tool_danielneis'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '5'; // incremental releases.
+
+function tool_danielneis_extend_navigation_course(navigation_node $parentnode, stdClass $course, context_course $context) {
+    $id = $context->instanceid;
+    $urltext = get_string('pluginlink', 'tool_danielneis');
+    $url = new moodle_url('/admin/tool/danielneis/index.php', array('id'=>$id));
+    $parentnode->add($urltext, $url);
+}
