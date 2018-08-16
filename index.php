@@ -14,6 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$string['indextitle'] = 'Welcome to tool example by Daniel';
-$string['hello'] = 'Hello world!';
-$string['pluginname'] = 'Tool example by Daniel';
+/**
+ * Plugin index page
+ *
+ * @package    tool_danielneis
+ * @copyright  2018 Daniel Neis
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+require_once(__DIR__ . '/../../../config.php');
+$url = new moodle_url('/admin/tool/danielneis/index.php');
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url($url);
+$PAGE->set_pagelayout('report');
+$PAGE->set_title(get_string('indextitle', 'tool_danielneis'));
+$PAGE->set_heading(get_string('pluginname', 'tool_danielneis'));
+
+echo get_string('hello', 'tool_danielneis');
