@@ -28,7 +28,8 @@ $id = required_param('id', PARAM_INT);
 
 require_login($id);
 
-require_capability('tool/danielneis:view', context_course::instance($id));
+$context = context_course::instance($id);
+require_capability('tool/danielneis:view', $context);
 
 $url = new moodle_url('/admin/tool/danielneis/index.php', array('id' => $id));
 $PAGE->set_url($url);
@@ -40,8 +41,12 @@ echo $OUTPUT->header(),
      $OUTPUT->heading($pagetitle),
      html_writer::tag('h2', get_string('hello', 'tool_danielneis', $id));
 
-
 $configcount = $DB->count_records('config');
 echo html_writer::tag('p', get_string('coursedescription', 'tool_danielneis', get_course($id))),
-     html_writer::tag('p', get_string('configcount', 'tool_danielneis', $configcount)),
-     $OUTPUT->footer();
+     html_writer::tag('p', get_string('configcount', 'tool_danielneis', $configcount));
+
+if (has_capability('tool/danielneis:edit', $context)) {
+     echo html_writer::link(new moodle_url('/admin/tool/danielneis/edit.php', array('courseid' => $id)), get_string('add'));
+}
+
+echo $OUTPUT->footer();

@@ -32,3 +32,13 @@ function tool_danielneis_extend_navigation_course(navigation_node $parentnode, s
         $parentnode->add($urltext, $url);
     }
 }
+
+function tool_danielneis_insert($data) {
+    global $DB;
+    $record = new stdclass();
+    $record->name = $data->name;
+    $record->completed = isset($data->completed) && $data->completed == 1;
+    $record->courseid = $data->courseid;
+    $record->timecreated = time();
+    return $DB->insert_record('tool_danielneis', $record);
+}
