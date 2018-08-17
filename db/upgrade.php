@@ -42,6 +42,9 @@ function xmldb_tool_danielneis_upgrade($oldversion) {
         if (!$dbman->table_exists($table)) {
             $dbman->create_table($table);
         }
+
+        // Danielneis savepoint reached.
+        upgrade_plugin_savepoint(true, 2018081701, 'tool', 'danielneis');
     }
     return true;
 }
