@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+$string['configcount'] = 'This moodle instance has {$a} records on config table';
+$string['coursedescription'] = 'This course name is "{$a->fullname}", it\'s format is "{$a->format}" and it\'s creation timestamp is {$a->timecreated}.';
 $string['hello'] = 'Hello world! The provided id is: {$a}';
 $string['indextitle'] = 'Welcome to tool example by Daniel';
 $string['pluginlink'] = 'Tool example';
