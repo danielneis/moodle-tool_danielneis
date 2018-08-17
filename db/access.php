@@ -15,15 +15,29 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version info
+ * Plugin capabilities
  *
  * @package    tool_danielneis
  * @copyright  2018 Daniel Neis
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-$plugin->version   = 2018081702; // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2018050800; // Requires this Moodle version.
-$plugin->component = 'tool_danielneis'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '8'; // incremental releases.
+$capabilities = array(
+    'tool/danielneis:view' => array(
+        'riskbitmask' => RISK_SPAM,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes' => array(
+            'student' => CAP_ALLOW
+            'editingteacher' => CAP_ALLOW
+        )
+    ),
+    'tool/danielneis:edit' => array(
+        'riskbitmask' => RISK_SPAM,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW
+        )
+    ),
+);
