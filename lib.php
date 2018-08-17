@@ -42,3 +42,18 @@ function tool_danielneis_insert($data) {
     $record->timecreated = time();
     return $DB->insert_record('tool_danielneis', $record);
 }
+
+function tool_danielneis_update($data) {
+    global $DB;
+    $record = new stdclass();
+    $record->id = $data->id;
+    $record->name = $data->name;
+    $record->completed = isset($data->completed) && $data->completed == 1;
+    $record->timemodified = time();
+    return $DB->update_record('tool_danielneis', $record);
+}
+
+function tool_danielneis_find($id) {
+    global $DB;
+    return $DB->get_record('tool_danielneis', ['id' => $id]);
+}

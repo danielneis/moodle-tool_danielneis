@@ -23,7 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-$plugin->version   = 2018081704; // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2018081705; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2018050800; // Requires this Moodle version.
 $plugin->component = 'tool_danielneis'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '10'; // incremental releases.
+$plugin->release = '11'; // incremental releases.

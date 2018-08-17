@@ -49,4 +49,7 @@ if (has_capability('tool/danielneis:edit', $context)) {
      echo html_writer::link(new moodle_url('/admin/tool/danielneis/edit.php', array('courseid' => $id)), get_string('add'));
 }
 
-echo $OUTPUT->footer();
+$table = new tool_danielneis_table('uniqid', $id);
+
+echo $table->out(10, true),
+     $OUTPUT->footer();
