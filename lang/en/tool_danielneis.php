@@ -16,6 +16,8 @@
 
 $string['configcount'] = 'This moodle instance has {$a} records on config table';
 $string['coursedescription'] = 'This course name is "{$a->fullname}", it\'s format is "{$a->format}" and it\'s creation timestamp is {$a->timecreated}.';
+$string['danielneis:edit'] = 'Edit tool danielneis';
+$string['danielneis:view'] = 'View tool danielneis';
 $string['hello'] = 'Hello world! The provided id is: {$a}';
 $string['indextitle'] = 'Welcome to tool example by Daniel';
 $string['pluginlink'] = 'Tool example';

@@ -24,14 +24,14 @@
 
 require_once(__DIR__ . '/../../../config.php');
 
-require_login();
-
 $id = required_param('id', PARAM_INT);
 
+require_login($id);
+
+require_capability('tool/danielneis:view', context_course::instance($id));
+
 $url = new moodle_url('/admin/tool/danielneis/index.php', array('id' => $id));
-$PAGE->set_context(context_system::instance());
 $PAGE->set_url($url);
-$PAGE->set_pagelayout('report');
 $pagetitle = get_string('indextitle', 'tool_danielneis');
 $PAGE->set_title($pagetitle);
 $PAGE->set_heading(get_string('pluginname', 'tool_danielneis'));
