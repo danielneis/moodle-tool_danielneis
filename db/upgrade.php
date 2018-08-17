@@ -29,16 +29,19 @@ function xmldb_tool_danielneis_upgrade($oldversion) {
     if ($oldversion < 2018081701) {
         $table = new xmldb_table('tool_danielneis');
 
+        // Adding fields to table tool_danielneis.
         $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
         $table->add_field('courseid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
         $table->add_field('name', XMLDB_TYPE_CHAR, '255', null, null, null, null);
-        $table->add_field('completed', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0);
-        $table->add_field('priority', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 1);
+        $table->add_field('completed', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0');
+        $table->add_field('priority', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '1');
         $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
         $table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
 
+        // Adding keys to table tool_danielneis.
         $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
 
+        // Conditionally launch create table for tool_danielneis.
         if (!$dbman->table_exists($table)) {
             $dbman->create_table($table);
         }
