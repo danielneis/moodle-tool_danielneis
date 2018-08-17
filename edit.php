@@ -60,6 +60,6 @@ if ($mform->is_cancelled()) {
     $PAGE->set_heading(get_string('addtitle', 'tool_danielneis'));
 
     echo $OUTPUT->header(),
-	 $mform->display(),
+         $mform->display(),
          $OUTPUT->footer();
 }
