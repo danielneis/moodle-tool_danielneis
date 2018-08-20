@@ -15,15 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version info
+ * Plugin tests
  *
  * @package    tool_danielneis
  * @copyright  2018 Daniel Neis
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-$plugin->version   = 2018082001; // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2018050800; // Requires this Moodle version.
-$plugin->component = 'tool_danielneis'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '13'; // incremental releases.
+class tool_danielneis_sample_testcase extends advanced_testcase {
+    public function test_adding() {
+        global $DB, $CFG;
+        require_once($CFG->dirroot.'/admin/tool/danielneis/lib.php');
+
+        $this->resetAfterTest(true);
+
+        $data = new stdclass();
+        $data->name = 'Fake name';
+        $data->courseid = 2;
+
+        tool_danielneis_insert($data);
+
+        $this->assertEquals(1, count($DB->get_records('tool_danielneis', [])));
+    }
+}
