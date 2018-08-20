@@ -57,9 +57,15 @@ class tool_danielneis_table extends table_sql {
 
     }
 
+    protected function col_name($row) {
+        return format_string($row->name);
+    }
+
     protected function col_edit($row) {
-        $url = new moodle_url('/admin/tool/danielneis/edit.php', ['id' => $row->id]);
-        return html_writer::link($url, get_string('edit'));
+        $editurl = new moodle_url('/admin/tool/danielneis/edit.php', ['id' => $row->id]);
+        $deleteurl = new moodle_url('/admin/tool/danielneis/delete.php', ['delete' => $row->id, 'sesskey' => sesskey()]);
+        return html_writer::link($editurl, get_string('edit')) . '&nbsp;' .
+               html_writer::link($deleteurl, get_string('delete'));
     }
 
     protected function col_completed($row) {

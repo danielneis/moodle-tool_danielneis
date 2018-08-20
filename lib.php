@@ -57,3 +57,8 @@ function tool_danielneis_find($id) {
     global $DB;
     return $DB->get_record('tool_danielneis', ['id' => $id]);
 }
+
+function tool_danielneis_delete($id) {
+    global $DB;
+    return $DB->delete_records('tool_danielneis', ['id' => $id]);
+}
