@@ -40,6 +40,11 @@ $context = context_course::instance($courseid);
 require_capability('tool/danielneis:edit', $context);
 
 $mform = new tool_danielneis_form();
+if (!empty($record->id)) {
+    file_prepare_standard_editor($record, 'description',
+        tool_danielneis_editor_options(),
+        $PAGE->context, 'tool_danielneis', 'record', $record->id);
+}
 $mform->set_data($record);
 
 if ($mform->is_cancelled()) {

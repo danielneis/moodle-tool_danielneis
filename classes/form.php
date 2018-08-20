@@ -29,13 +29,15 @@ require_once("$CFG->libdir/formslib.php");
 class tool_danielneis_form extends moodleform {
 
     public function definition() {
-        global $CFG;
+        global $CFG, $PAGE;
 
         $mform = $this->_form;
 
         $mform->addElement('text', 'name', get_string('name'));
         $mform->setType('name', PARAM_NOTAGS);
         $mform->setDefault('name', '');
+
+        $mform->addElement('editor', 'description_editor', get_string('description'), null, tool_danielneis_editor_options());
 
         $mform->addElement('checkbox', 'completed', get_string('completed', 'tool_danielneis'));
 

@@ -33,8 +33,8 @@ class tool_danielneis_table extends table_sql {
 
         parent::__construct($uniqueid);
 
-        $columns = ['id', 'name', 'completed', 'timecreated', 'timemodified'];
-        $headers = [get_string('id', 'tool_danielneis'), get_string('name'),
+        $columns = ['id', 'name', 'description', 'completed', 'timecreated', 'timemodified'];
+        $headers = [get_string('id', 'tool_danielneis'), get_string('name'), get_string('description'),
                     get_string('completed', 'tool_danielneis'), get_string('timecreated', 'tool_danielneis'),
                     get_string('timemodified', 'tool_danielneis')];
 
@@ -53,12 +53,20 @@ class tool_danielneis_table extends table_sql {
 
         $this->define_baseurl($PAGE->url);
 
-        $this->set_sql('id, name, completed, timecreated, timemodified', '{tool_danielneis}', 'courseid = ?', [$courseid]);
+        $this->set_sql('id, name, description, descriptionformat, completed, timecreated, timemodified',
+                '{tool_danielneis}', 'courseid = ?', [$courseid]);
 
     }
 
     protected function col_name($row) {
         return format_string($row->name);
+    }
+
+    protected function col_description($row) {
+        $options = tool_danielneis_editor_options();
+        $description = file_rewrite_pluginfile_urls($row->description, 'pluginfile.php',
+            $options['context']->id, 'tool_danielneis', 'record', $row->id, $options);
+        return format_text($description, $row->descriptionformat, $options);
     }
 
     protected function col_edit($row) {
