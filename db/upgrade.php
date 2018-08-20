@@ -49,5 +49,27 @@ function xmldb_tool_danielneis_upgrade($oldversion) {
         // Danielneis savepoint reached.
         upgrade_plugin_savepoint(true, 2018081701, 'tool', 'danielneis');
     }
+
+    if ($oldversion < 2018082002) {
+
+        // Define field descriptionformat to be added to tool_danielneis.
+        $table = new xmldb_table('tool_danielneis');
+        $field = new xmldb_field('descriptionformat', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'timemodified');
+
+        // Conditionally launch add field descriptionformat.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        $field = new xmldb_field('description', XMLDB_TYPE_TEXT, null, null, null, null, null, 'descriptionformat');
+
+        // Conditionally launch add field description.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Danielneis savepoint reached.
+        upgrade_plugin_savepoint(true, 2018082002, 'tool', 'danielneis');
+    }
     return true;
 }
